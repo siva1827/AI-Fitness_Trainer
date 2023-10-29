@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+    rel="stylesheet">
+
+  <!--
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/hero-circle-one.png">
+  <link rel="preload" as="image" href="./assets/images/hero-circle-two.png">
+  <link rel="preload" as="image" href="./assets/images/heart-rate.svg">
+  <link rel="preload" as="image" href="./assets/images/calories.svg">
+  <style>
+    #loading, #results {
+      display: none;
+    }
+    #loading {
+      width: 100%;
+    }
+  </style>
+
+</head>
+
+<body id="top">
+
+  <!--
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+
+        <span class="span">AI-Fitness Trainer</span>
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+        </button>
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="./index.html" class="navbar-link active" data-nav-link>Home</a>
+          </li>
+
+          <li>
+            <a href="#about" class="navbar-link" data-nav-link>About Us</a>
+          </li>
+
+          <li>
+            <a href="#class" class="navbar-link" data-nav-link>Classes</a>
+          </li>
+
+          <li>
+            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link" data-nav-link>Contact Us</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <a href="#" class="btn btn-secondary">Join Now</a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+
+    </div>
+  </header>
+
+
+
+
+
+  <main>
+    <article>
+
+      <!--
+        - #HERO
+      -->
+
+      <section class="section hero bg-dark has-after has-bg-image" id="home" aria-label="hero" data-section
+        style="background-image: url('./assets/images/hero-bg.png')">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <p class="hero-subtitle">
+              <strong class="strong">The Best</strong>Fitness Club
+            </p>
+
+            <h1 class="h1 hero-title">Work Hard To Get Better Life</h1>
+
+            <p class="section-text">
+              "Fitness is not about being better than someone else. It's about being better than you used to be"          </p>
+
+            <a  href="form.html" class="btn btn-primary">Get Started</a>
+
+          </div>
+
+          <div class="hero-banner">
+
+            <img src="./assets/images/hero-banner.png" width="660" height="753" alt="hero banner" class="w-100">
+
+            <img src="./assets/images/hero-circle-one.png" width="666" height="666" aria-hidden="true" alt=""
+              class="circle circle-1">
+            <img src="./assets/images/hero-circle-two.png" width="666" height="666" aria-hidden="true" alt=""
+              class="circle circle-2">
+
+            <img src="./assets/images/heart-rate.svg" width="255" height="270" alt="heart rate"
+              class="abs-img abs-img-1">
+            <img src="./assets/images/calories.svg" width="348" height="224" alt="calories" class="abs-img abs-img-2">
+
+          </div>
+
+        </div>
+      </section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mx-auto">
+            <div class="card card-body text-center mt-5">
+              <h1 class="heading display-5 pb-3">Calorie Calculator</h1>
+              <form id="calorie-form">
+  
+                <div class="form-group row">
+                  <label for="age" class="col-sm-2 col-form-label">Age</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="age" placeholder="Ages 15-80">
+                  </div>
+                </div>
+  
+                <fieldset class="form-group">
+                  <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                    <div class="col-sm-10" id="form-radio">
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="male" name="customRadioInline1" class="custom-control-input" checked="checked">
+                        <label class="custom-control-label" for="male">Male</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="female" name="customRadioInline1" class="custom-control-input">
+                        <label class="custom-control-label" for="female">Female</label>
+                      </div>  
+                    </div>
+                  </div> 
+                </fieldset> 
+  
+                <div class="form-group row">
+                  <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="weight" placeholder="In kilograms">
+                  </div>
+                </div>
+  
+                <div class="form-group row">
+                  <label for="height" class="col-sm-2 col-form-label">Height</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="height" placeholder="In centimeters">
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <legend class="col-form-label col-sm-2 pt-0">Activity</legend>
+                  <select class="custom-select col-sm-10" id="list">
+                    <option selected value="1">Sedentary (little or no exercise)</option>
+                    <option value="2">Lightly active (light exercise/sports 1-3 days/week)</option>
+                    <option value="3">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                    <option value="4">Very active (hard exercise/sports 6-7 days a week)</option>
+                    <option value="5">Extra active (very hard exercise/sports & physical job or 2x training)</option>
+                  </select>
+                </div>
+  
+                <div class="form-group">
+                  <input type="submit" value="Calculate" class="btn btn-dark btn-block">
+                </div>
+  
+              </form>
+  
+              <div id="loading">
+                <img src="./img1/Loading.gif" alt="">
+              </div>
+  
+              <div id="results" class="pt-4">
+                <h5>Total Calories</h5>
+                <div class="form-group">
+                  <div class="input-group">
+                    <input type="number" class="form-control" id="total-calories" disabled>
+                  </div>
+                </div>                       
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="section blog" id="blog" aria-label="blog">
+        <div class="container">
+
+          <p class="section-subtitle">Our News</p>
+
+          <h2 class="h2 section-title text-center">Latest Blog Feed</h2>
+
+          <ul class="blog-list has-scrollbar">
+
+            <li class="scrollbar-item">
+              <div class="blog-card">
+
+                <div class="card-banner img-holder" style="--width: 440; --height: 270;">
+                  <img src="./assets/images/blog-1.jpg" width="440" height="270" loading="lazy"
+                    alt="Going to the gym for the first time" class="img-cover">
+
+                  <time class="card-meta" datetime="2022-07-07">7 March 2023</time>
+                </div>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Going to the gym for the first time</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Total Gym pulse contains gym workouts, exercises videos, healthy eatings and many more. Total Gym provides an entire gym full of equipment in ONE machine and best of all, it just takes 10-20 minutes a day to reshape your body into the body you've always wanted.
+                  </p>
+
+                  <a href="#" class="btn-link has-before">Read More</a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="blog-card">
+
+                <div class="card-banner img-holder" style="--width: 440; --height: 270;">
+                  <img src="./assets/images/blog-2.jpg" width="440" height="270" loading="lazy"
+                    alt="Parturient accumsan cacus pulvinar magna" class="img-cover">
+
+                  <time class="card-meta" datetime="2022-07-07">7 March 2023</time>
+                </div>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Fitness and Nutrition Blog</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Fitness, Nutrition & Health Blog. The Runtastic Ecosystem offers users a comprehensive and easy-to-use portfolio of health and fitness products, services & content. Why? Because we want our users to track their daily lives and develop better awareness of how they're living. We want to help them reach their goals, live better & live longer.
+                  </p>
+
+                  <a href="#" class="btn-link has-before">Read More</a>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li class="scrollbar-item">
+              <div class="blog-card">
+
+                <div class="card-banner img-holder" style="--width: 440; --height: 270;">
+                  <img src="./assets/images/blog-3.jpg" width="440" height="270" loading="lazy"
+                    alt="Risus purus namien parturient accumsan cacus" class="img-cover">
+
+                  <time class="card-meta" datetime="2022-07-07">7 March 2023</time>
+                </div>
+
+                <div class="card-content">
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Gym Junkies</a>
+                  </h3>
+
+                  <p class="card-text">
+                    Learn about fitness, building muscle, weight loss, nutrition, product reviews and supplements through our free blog articles at gym junkies.
+                  </p>
+
+                  <a href="#" class="btn-link has-before">Read More</a>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+
+
+
+
+
+  <!--
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="section footer-top bg-dark has-bg-image" style="background-image: url('./assets/images/footer-bg.png')">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+
+            <span class="span">AI-Fitness Trainer</span>
+          </a>
+
+          <p class="footer-brand-text">
+            The body achieves what the mind believes.          </p>
+
+          <div class="wrapper">
+
+            <img src="./assets/images/footer-clock.png" width="34" height="34" loading="lazy" alt="Clock">
+
+            <ul class="footer-brand-list">
+
+              <li>
+                <p class="footer-brand-title">Monday - Friday</p>
+
+                <p>7:00Am - 10:00Pm</p>
+              </li>
+
+              <li>
+                <p class="footer-brand-title">Saturday - Sunday</p>
+
+                <p>7:00Am - 2:00Pm</p>
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title has-before">Our Links</p>
+          </li>
+
+          <li>
+            <a href="./index.html" class="footer-link">Home</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Classes</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Blog</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact Us</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title has-before">Contact Us</p>
+          </li>
+
+          <li class="footer-list-item">
+            <div class="icon">
+              <ion-icon name="location" aria-hidden="true"></ion-icon>
+            </div>
+
+            <address class="address footer-link">
+              1247/Plot No. 39, 15th Phase, Colony, Kukatpally, Hyderabad
+            </address>
+          </li>
+
+          <li class="footer-list-item">
+            <div class="icon">
+              <ion-icon name="call" aria-hidden="true"></ion-icon>
+            </div>
+
+            <div>
+              <a href="tel:18001213637" class="footer-link">1800-121-3637</a>
+
+              <a href="tel:+915552348765" class="footer-link">+91 555 234-8765</a>
+            </div>
+          </li>
+
+          <li class="footer-list-item">
+            <div class="icon">
+              <ion-icon name="mail" aria-hidden="true"></ion-icon>
+            </div>
+
+            <div>
+              <a href="mailto:info@fitlife.com" class="footer-link">info@aitrainer.com</a>
+
+              <a href="mailto:services@fitlife.com" class="footer-link">services@aitrainer.com</a>
+            </div>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title has-before">Our Newsletter</p>
+          </li>
+
+          <li>
+            <form action="" class="footer-form">
+              <input type="email" name="email_address" aria-label="email" placeholder="Email Address" required
+                class="input-field">
+
+              <button type="submit" class="btn btn-primary" aria-label="Submit">
+                <ion-icon name="chevron-forward-sharp" aria-hidden="true"></ion-icon>
+              </button>
+            </form>
+          </li>
+
+          <li>
+            <ul class="social-list">
+
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="social-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2023 AI-Fitness Trainer. All Rights Reserved By <a href="#" class="copyright-link">codewithsadee.</a>
+        </p>
+
+        <ul class="footer-bottom-list">
+
+          <li>
+            <a href="#" class="footer-bottom-link has-before">Privacy Policy</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-bottom-link has-before">Terms & Condition</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!--
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

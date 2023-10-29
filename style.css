@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+}
+
+#map { height: 400px;
+width:200vh; 
+padding-left: 200px;
+margin-left: 100px;
+}
+.new{
+    padding-left: 400px;
+}
